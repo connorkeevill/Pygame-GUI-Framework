@@ -1,7 +1,7 @@
 # CK
 
 import pygame
-from src.objects.Title import Title
+from src.objects.interfaceElemements.Title import Title
 
 
 pygame.init()

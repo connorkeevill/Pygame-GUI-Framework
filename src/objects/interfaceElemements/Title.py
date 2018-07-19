@@ -2,7 +2,6 @@
 
 from src import Helpers
 
-
 # | Title()
 # |------------------------------------------------------------------
 # | Class for a title that can be displayed on a surface object. It
