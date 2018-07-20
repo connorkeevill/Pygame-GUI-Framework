@@ -20,17 +20,29 @@ pages = ["""The pages that are in this game"""]
 
 router = Router(screen)
 
-page = router.route("MainMenu")
+page = router.route("""Insert the name of the starting page here""")
 pageToResume = None
 
+# | Main game loop
 while True:
     page.update()
     page.draw()
 
+    # | Loop to allow the current page to handle each event there may be
     for event in pygame.event.get():
         action = page.handleEvent(event)
 
-        """Page changes go here"""
+        if action in pages: # | If the action is a valid page
+
+            if action == "Pause": # | Pause and store the page if needed
+                page.pause()
+                pageToResume = page
+
+            page = router.route(action) # | Route to the new page
+
+        elif action == "Resume": # | Resume to the previous page
+            page = pageToResume
+            page.unpause()
 
         Helpers.checkForQuit(event)
 
